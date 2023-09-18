@@ -12,9 +12,11 @@ export default function RootPage() {
 
   return (
    <div className="p-4">
-    <Button size={"default"} variant={"outline"} onClick={demo}>Click me</Button>
     <div>This is a protected route</div>
-    <UserButton afterSignOutUrl="/"/>
+    <UserButton afterSignOutUrl="/" showName/>
+    <div className="flex items-center justify-center">
+    <Button size={"default"} variant={"outline"} onClick={demo}>Click me</Button>
+    </div>
    </div>
   )
 }
