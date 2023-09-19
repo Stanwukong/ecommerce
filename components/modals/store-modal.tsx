@@ -10,7 +10,7 @@ export const StoreModal = () => {
     return (
         <Modal
             title="Create Store"
-            desc="New products and categories! Congrats on your growth baby girl"
+            desc="New products and categories! Congrats baby girl"
             isOpen={storeModal.isOpen}
             onClose={storeModal.onClose}
         >
