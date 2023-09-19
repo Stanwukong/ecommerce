@@ -2,10 +2,15 @@
 
 import { Button } from "@/components/ui/button";
 import Modal from "@/components/ui/modal";
+import { useStoreModal } from "@/hooks/use-store-modal";
 import { UserButton } from "@clerk/nextjs";
 
 
 export default function RootPage() {
+
+  const onOpen = useStoreModal((state) => state.onOpen)
+  const isOpen = useStoreModal((state) => state.isOpen)
+
 
   const demo = () => {
     alert("Still in development");
