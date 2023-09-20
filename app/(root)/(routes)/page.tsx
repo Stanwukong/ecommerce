@@ -23,14 +23,5 @@ export default function RootPage() {
     alert("Still in development");
   }
 
-  return (
-    <div className="p-4">
-      <div>This is a protected route</div>
-      <UserButton afterSignOutUrl="/" showName />
-      <Modal title="Test" desc="desc" isOpen onClose={() => { }}>Children</Modal>
-      <div className="flex items-center justify-center">
-        <Button size={"default"} variant={"outline"} onClick={demo}>Click me</Button>
-      </div>
-    </div>
-  )
+  return null;
 }
