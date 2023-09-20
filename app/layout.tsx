@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import { ModalProvider } from '@/providers/modal-provider'
+import prismadb from '@/lib/prismadb'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -16,7 +17,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  return (
+    return (
     <ClerkProvider>
       <html lang="en">
         <body className={inter.className}>
