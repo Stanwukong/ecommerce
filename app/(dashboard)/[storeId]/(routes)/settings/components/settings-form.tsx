@@ -11,6 +11,9 @@ import { useForm } from "react-hook-form"
 import { useState } from "react"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import toast from "react-hot-toast"
+import axios from "axios"
+import { useParams, useRouter } from "next/navigation"
 
 interface SettingsFormProps {
   initialData: Store
@@ -24,6 +27,9 @@ type SettingsFormValues = z.infer<typeof formSchema>;
 
 const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 
+	const params = useParams();
+	const router = useRouter();
+
 	const [isOpen, setIsOpen] = useState(false);
 	const [loading, setLoading] = useState(false);
 
@@ -32,8 +38,19 @@ const SettingsForm: React.FC<SettingsFormProps> = ({ initialData }) => {
 		defaultValues: initialData
 	});
 
-	const onSubmit = (data: SettingsFormValues) => {
-		console.log("[FORM_DATA]", data)
+	const onSubmit = async (data: SettingsFormValues) => {
+		try {
+			setLoading(true)
+			await axios.patch(`/api/stores/${params.storeId}`, data)
+			router.refresh();
+			toast.success("Settings updated!");
+			console.log("[FORM_DATA]", data)
+		} catch (error) {
+			toast.error("Something went wrong!")
+			console.log("[FORM_ERROR]", error)
+		} finally {
+			setLoading(false)
+		}
 	}
   return (
     <>

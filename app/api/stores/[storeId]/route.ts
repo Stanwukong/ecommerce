@@ -15,7 +15,7 @@ export async function PATCH (
 
 		if (!userId) {
 			return new NextResponse("Unathenticated", { status: 401 })
-		}
+		} 
 
 		if (!name) {
 			return new NextResponse("Name is required", { status: 400 })
@@ -45,7 +45,7 @@ export async function PATCH (
 
 
 export async function DELETE (
-	req: Request,
+	_req: Request,
 	{ params }: { params: { storeId: string } }
 ) {
 	try {
