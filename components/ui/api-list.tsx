@@ -17,7 +17,6 @@ export const ApiList: React.FC<APIListProps> = (
 	}
 ) => {
 	const params = useParams();
-	const origin = useOrigin();
 
 
 	const baseURL = `${origin}/api/${params.storeId}`;
@@ -28,6 +27,26 @@ export const ApiList: React.FC<APIListProps> = (
 			title="GET" 
 			variant="public"
 			desc={`${baseURL}/${entityName}`}
+		/>
+		<APIAlert 
+			title="GET" 
+			variant="public"
+			desc={`${baseURL}/${entityName}/{${entityIdName}}`}
+		/>
+		<APIAlert 
+			title="POST" 
+			variant="admin"
+			desc={`${baseURL}/${entityName}`}
+		/>
+		<APIAlert 
+			title="PATCH" 
+			variant="admin"
+			desc={`${baseURL}/${entityName}/{${entityIdName}}`}
+		/>
+		<APIAlert 
+			title="DELETE" 
+			variant="admin"
+			desc={`${baseURL}/${entityName}/{${entityIdName}}`}
 		/>
 	</>
   )
